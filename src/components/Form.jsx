@@ -24,7 +24,10 @@ const Form = () => {
   const handleValue = (input, value) => {
     console.log(value, input);
     setUserInput((prevInput) => {
-      return { ...prevInput, [input]: value };
+      return {
+         ...prevInput,
+         [input]: value,
+        };
     });
   };
 
@@ -36,7 +39,7 @@ const Form = () => {
           <input
             type="number"
             onChange={(event) =>
-              handleValue("current-savings : ", event.target.value)
+              handleValue("current-savings", event.target.value)
             }
             value={userInput["current-savings"]}
             id="current-savings"
@@ -47,7 +50,7 @@ const Form = () => {
           <input
             type="number"
             onChange={(event) =>
-              handleValue("yearly-contribution : ", event.target.value)
+              handleValue("yearly-contribution", event.target.value)
             }
             value={userInput["yearly-contribution"]}
             id="yearly-contribution"
@@ -62,7 +65,7 @@ const Form = () => {
           <input
             type="number"
             onChange={(event) =>
-              handleValue("expected-return : ", event.target.value)
+              handleValue("expected-return", event.target.value)
             }
             value={userInput["expected-return"]}
             id="expected-return"
@@ -72,7 +75,7 @@ const Form = () => {
           <label htmlFor="duration">Investment Duration (years)</label>
           <input
             type="number"
-            onChange={(event) => handleValue("duration : ", event.target.value)}
+            onChange={(event) => handleValue("duration", event.target.value)}
             id="duration"
             value={userInput["duration"]}
           />
