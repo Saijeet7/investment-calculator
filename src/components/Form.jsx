@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+
+const defaultValue = {
+  "current-savings": 10000,
+  "yearly-contribution": 1200,
+  "expected-return": 7,
+  duration: 3,
+};
 
 const Form = () => {
+  const [userInput, setUserInput] = useState(defaultValue);
+
   const calculate = (event) => {
     event.preventDefault();
     console.log("Submit is clicked");
@@ -9,10 +18,14 @@ const Form = () => {
   const reset = (event) => {
     event.preventDefault();
     console.log("Reset is clicked");
+    setUserInput(defaultValue);
   };
 
   const handleValue = (input, value) => {
-    console.log(input, value);
+    console.log(value, input);
+    setUserInput((prevInput) => {
+      return { ...prevInput, [input]: value };
+    });
   };
 
   return (
@@ -25,6 +38,7 @@ const Form = () => {
             onChange={(event) =>
               handleValue("current-savings : ", event.target.value)
             }
+            value={userInput["current-savings"]}
             id="current-savings"
           />
         </p>
@@ -35,6 +49,7 @@ const Form = () => {
             onChange={(event) =>
               handleValue("yearly-contribution : ", event.target.value)
             }
+            value={userInput["yearly-contribution"]}
             id="yearly-contribution"
           />
         </p>
@@ -49,6 +64,7 @@ const Form = () => {
             onChange={(event) =>
               handleValue("expected-return : ", event.target.value)
             }
+            value={userInput["expected-return"]}
             id="expected-return"
           />
         </p>
@@ -58,6 +74,7 @@ const Form = () => {
             type="number"
             onChange={(event) => handleValue("duration : ", event.target.value)}
             id="duration"
+            value={userInput["duration"]}
           />
         </p>
       </div>
