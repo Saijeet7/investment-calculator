@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import classes from "./Form.module.css";
 
 const defaultValue = {
   "current-savings": 10000,
@@ -21,19 +22,18 @@ const Form = (props) => {
     setUserInput(defaultValue);
   };
 
-  const handleValue = (input, value) => {
-    console.log(value, input);
+  const handleValue = (input, value) => {;
     setUserInput((prevInput) => {
       return {
-         ...prevInput,
-         [input]: value,
-        };
+        ...prevInput,
+        [input]: +value,
+      };
     });
   };
 
   return (
-    <form onSubmit={calculate} className="form">
-      <div className="input-group">
+    <form onSubmit={calculate} className={classes.form}>
+      <div className={classes["input-group"]}>
         <p>
           <label htmlFor="current-savings">Current Savings ($)</label>
           <input
@@ -57,7 +57,7 @@ const Form = (props) => {
           />
         </p>
       </div>
-      <div className="input-group">
+      <div className={classes["input-group"]}>
         <p>
           <label htmlFor="expected-return">
             Expected Interest (%, per year)
@@ -81,11 +81,11 @@ const Form = (props) => {
           />
         </p>
       </div>
-      <p className="actions">
-        <button type="reset" className="buttonAlt" onClick={reset}>
+      <p className={classes.actions}>
+        <button type="reset" className={classes.buttonAlt} onClick={reset}>
           Reset
         </button>
-        <button type="submit" className="button">
+        <button type="submit" className={classes.button}>
           Calculate
         </button>
       </p>

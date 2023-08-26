@@ -1,7 +1,7 @@
 import logo from "./assets/investment-calculator-logo.png";
-import Header from "./components/Header";
-import Form from "./components/Form";
-import Result from "./components/Result";
+import Header from "./components/Header/Header";
+import Form from "./components/Form/Form";
+import Result from "./components/Result/Result";
 import { useState } from "react";
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
     <div>
       <Header logo={logo} title="Investment Calculator" />
       <Form onCalculate={calculateHandler} />
-      {!userInput && <p>No Investment calculated yet.</p>}
+      {!userInput && <p style={{textAlign: 'center'}}>No Investment calculated yet.</p>}
       {userInput && (
         <Result
           data={yearlyData}
