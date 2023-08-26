@@ -7,12 +7,12 @@ const defaultValue = {
   duration: 3,
 };
 
-const Form = () => {
+const Form = (props) => {
   const [userInput, setUserInput] = useState(defaultValue);
 
   const calculate = (event) => {
     event.preventDefault();
-    console.log("Submit is clicked");
+    props.onCalculate(userInput);
   };
 
   const reset = (event) => {
